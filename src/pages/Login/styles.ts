@@ -4,10 +4,11 @@ import { Themes } from "../../styles/Themes";
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
   align-items: center;
   justify-content: center;
-  padding: 10%;
 `
 
 export const LoginForm = styled.form`
@@ -15,6 +16,10 @@ export const LoginForm = styled.form`
   flex-direction: column;
   width: 450px;
   height: 500px;
+  @media screen and (max-width: 450px) {
+    width: 100%;
+    height: 100%;
+  }
   align-items: center;
   justify-content: center;
   background-color: ${Themes.white};
@@ -29,4 +34,11 @@ export const LoginTitle = styled.h2`
   font-size: 24px;
   font-weight: 500;
   color: ${Themes.blue};
+`
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
 `

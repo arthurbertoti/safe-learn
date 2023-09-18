@@ -1,22 +1,51 @@
 import { Link } from "react-router-dom"
 
-import { Container, LoginForm, LoginTitle } from "./styles"
+import { ButtonContainer, Container, LoginForm, LoginTitle } from "./styles"
+import { Input } from "../../components/Input"
+import { Button } from "../../components/Button"
+import { useState } from "react"
 
 export function Login() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const buttonDisabled = email === "" || password === ""
+
+  function handleSubmit(email: string, password: string) {
+    console.log("login pipipipopopo", email, password)
+  }
+
   return (
     <Container>
       <LoginForm
-        onSubmit={() => {
-          console.log("login pipipipopopo")
+        onSubmit={(e) => {
+          e.preventDefault()
+          handleSubmit(email, password)
         }}
       >
         <LoginTitle>Safe Learn</LoginTitle>
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" />
-        <label htmlFor="password">Senha</label>
-        <input type="password" id="password" />
+        <Input
+          label="Email"
+          type="email"
+          id="email"
+          onChange={(e) => {
+            setEmail(e.target.value)
+          }}
+        />
+        <Input
+          label="Password"
+          type="password"
+          id="password"
+          onChange={(e) => {
+            setPassword(e.target.value)
+          }}
+        />
         <Link to={"/forgot"}>esqueceu a senha?</Link>
-        <button type="submit">Login</button>
+        <ButtonContainer>
+          <Button disabled={buttonDisabled} type="submit">
+            Login
+          </Button>
+        </ButtonContainer>
         <Link to={"/create-account"}>Não tem uma conta ainda?</Link>
       </LoginForm>
     </Container>
