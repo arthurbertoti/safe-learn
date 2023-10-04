@@ -1,11 +1,10 @@
-import { Routes, Route } from "react-router-dom"
-import { Home, Login } from "../pages"
+import { useAuth } from "../contexts/AuthContext"
+
+import { AppRoutes } from "./app.routes"
+import { AuthRoutes } from "./auth.routes"
 
 export function Router() {
-  return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Home />} />
-    </Routes>
-  )
+  const { signed } = useAuth()
+
+  return signed ? <AppRoutes /> : <AuthRoutes />
 }

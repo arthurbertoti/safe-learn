@@ -42,3 +42,20 @@ export const ButtonContainer = styled.div`
   width: 80%;
   justify-content: space-between;
 `
+
+export const InputContainer = styled.div`
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`
+
+export const EyeButton = styled.div`
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  right: 70px;
+`
