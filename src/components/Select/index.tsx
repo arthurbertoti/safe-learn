@@ -5,7 +5,6 @@ import {
   CustomSelect,
   OptionDropdown,
   OptionList,
-  SelectIcon,
 } from './style'
 
 export interface OptionsSelect {
@@ -21,7 +20,6 @@ export interface CustomSelectProps {
   data: string
   setData: (value: string) => void
   readOnly?: boolean
-  isNewContent?: boolean
 }
 
 export function Select({
@@ -32,7 +30,6 @@ export function Select({
   data,
   setData,
   readOnly = true,
-  isNewContent = false,
 }: CustomSelectProps) {
   const { isComponentVisible, setIsComponentVisible } =
     useComponentVisible<HTMLLabelElement>(false)
@@ -49,7 +46,6 @@ export function Select({
           onClick={toggleDropdown}
           value={data}
           readOnly={readOnly}
-          isNewContent={isNewContent}
         />
       </DivSelect>
       {isComponentVisible && (

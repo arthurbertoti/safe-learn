@@ -11,8 +11,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  background-color: ${Themes.white};
   border: 1px solid ${Themes.blue};
   border-radius: 8px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 `
 
 export const TableContainer = styled.table`
@@ -36,6 +38,21 @@ export const TableHeader = styled.thead`
   border-bottom: 1px solid ${Themes.blue};
   color: ${Themes.blue};
   font-weight: 800 !important;
+`
+
+export const TableHeaderRow = styled.tr`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid ${Themes.blue};
+  border-bottom: 1px solid ${Themes.blue};
+  color: ${Themes.blue};
+  font-weight: 800 !important;
+  :last-child {
+    border-bottom: none;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
 `
 
 export const TableHeaderCell = styled.th<TableCellProps>`
@@ -97,8 +114,8 @@ export const InputContainer = styled.div`
   justify-content: center;
   input {
     background-color: ${Themes.white};
-    border-radius: 12px;
     border: 1px solid ${Themes.blue};
+    border-radius: 12px;
     color: ${Themes.blue};
     font-size: 15px;
     outline: none;

@@ -9,7 +9,8 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  InputContainer
+  InputContainer,
+  TableHeaderRow,
 } from "./style"
 
 const usersData = [
@@ -71,10 +72,7 @@ const usersData = [
   {
     nome: "Mariana",
     ano: 3,
-    matérias: [
-      "Lógica de Programação: Java",
-      "Matemática",
-    ],
+    matérias: ["Lógica de Programação: Java", "Matemática"],
   },
   {
     nome: "Fernanda",
@@ -234,26 +232,29 @@ export function Table() {
       </InputContainer>
       <TableContainer>
         <TableHeader>
-          <TableHeaderCell width={"20"}>Nome</TableHeaderCell>
-          <TableHeaderCell width={"10"}>ano</TableHeaderCell>
-          <TableHeaderCell width={"70"}>
-            <Select
-              id="subjectSelect"
-              options={allSubjects}
-              data={filterSubject}
-              setData={setFilterSubject}
-              inputArrow={false}
-            />
-          </TableHeaderCell>
+          <TableHeaderRow>
+            <TableHeaderCell width={"20"}>Nome</TableHeaderCell>
+            <TableHeaderCell width={"10"}>ano</TableHeaderCell>
+            <TableHeaderCell width={"70"}>
+              <Select
+                id="subjectSelect"
+                options={allSubjects}
+                data={filterSubject}
+                setData={setFilterSubject}
+                inputArrow={false}
+              />
+            </TableHeaderCell>
+          </TableHeaderRow>
         </TableHeader>
         <TableBody>
           {filteredData.map((val, key) => {
             return (
-              <TableRow key={key} onClick={
-                () => {
+              <TableRow
+                key={key}
+                onClick={() => {
                   console.log(navigate("/student"))
-                }
-              }>
+                }}
+              >
                 <TableCell width={"20"}>{val.nome}</TableCell>
                 <TableCell width={"10"}>{val.ano}</TableCell>
                 <TableCell width={"70"}>{val.matérias.join(", ")}</TableCell>

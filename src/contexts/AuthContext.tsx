@@ -63,11 +63,12 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   }
 
   const signOut = () => {
-    setSigned(false)
-    setRoles([])
-    setUserName(null)
-    setUserId(null)
-    navigate("/login")
+    navigate("/")
+    window.location.reload()
+    // setSigned(false)
+    // setRoles([])
+    // setUserName(null)
+    // setUserId(null)
   }
 
   useEffect(() => {

@@ -7,5 +7,5 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10%;
+  padding: 0 10% 10% 10%;
 `

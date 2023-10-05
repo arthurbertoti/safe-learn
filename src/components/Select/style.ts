@@ -3,14 +3,15 @@ import { Themes } from '../../styles/Themes'
 
 export const DropdownContainer = styled.div`
   position: absolute;
-  width: 100%;
-  max-height: 250px;
+  width: 50%;
+  max-height: 220px;
   overflow-y: auto;
   z-index: 5;
   cursor: pointer;
   background-color: ${Themes.white};
   border-radius: 20px;
-  border: 1px solid gray;
+  border: 1px solid ${Themes.blue};
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 `
 
 export const DivSelect = styled.div`
@@ -18,7 +19,7 @@ export const DivSelect = styled.div`
   display: flex;
 `
 
-export const CustomSelect = styled.input<{ isNewContent?: boolean }>`
+export const CustomSelect = styled.input`
   appearance: none;
   width: 100%;
   height: 30px;
@@ -30,14 +31,6 @@ export const CustomSelect = styled.input<{ isNewContent?: boolean }>`
   font-size: 15px;
   outline: none;
   padding: 16px 32px;
-`
-
-export const SelectIcon = styled.img`
-  position: absolute;
-  cursor: pointer;
-  width: 15px;
-  right: 16px;
-  top: 60%;
 `
 
 export const OptionList = styled.ul<{ isNewContent?: boolean }>`
