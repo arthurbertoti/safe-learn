@@ -1,31 +1,3 @@
-// interface SelectProps {
-//   id: string
-//   name: string
-//   options: Array<{
-//     value: string | number
-//     label: string | number
-//   }>
-//   onChange: (value: string | number) => void
-//   value: string | number
-// }
-
-// export function Select({ id, name, options, onChange, value }: SelectProps) {
-//   return (
-//     <select
-//       id={id}
-//       name={name}
-//       onChange={(event) => onChange(event.target.value)}
-//       value={value}
-//     >
-//       {options.map((option: any) => (
-//         <option key={option.value} value={option.value}>
-//           {option.label}
-//         </option>
-//       ))}
-//     </select>
-//   )
-// }
-
 import { useComponentVisible } from '../../hooks/useComponentVisible'
 import arrowImg from '../../assets/arrow-down.svg'
 import {

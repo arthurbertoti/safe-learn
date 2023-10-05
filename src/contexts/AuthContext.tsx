@@ -51,7 +51,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
       setRoles(["admin"])
       setScope("admin")
       navigate("/")
-    } if(username === "user" && password === "1234") {
+    } if(username === "user@gmail.com" && password === "1234") {
       setSigned(true)
       setLoginError(null)
       setUserId(2)

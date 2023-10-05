@@ -1,17 +1,113 @@
-import React, { useState } from 'react'
-import { Input } from '../Input'
-import { Select } from '../Select'
+import { useState } from "react"
+import { Input, Select } from "../"
+import {
+  Container,
+  TableContainer,
+  TableHeader,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "./style"
+import chatImg from "../../assets/chat.png"
 
-const data = [
-  { nome: "Anom", idade: 19, matérias: ["Português", "Matemática", "Lógica de Programação"] },
-  { nome: "Megha", idade: 19, matérias: ["Filosofia", "Inglês", "Português"] },
-  { nome: "Subham", idade: 25, matérias: ["Lógica de Programação"] },
+const usersData = [
+  {
+    nome: "Anom",
+    ano: 2,
+    matérias: ["Português", "Matemática", "Lógica de Programação: Java"],
+  },
+  { nome: "Megha", ano: 2, matérias: ["Filosofia", "Inglês", "Português"] },
+  { nome: "Subham", ano: 2, matérias: ["Lógica de Programação: Python"] },
+  {
+    nome: "João",
+    ano: 3,
+    matérias: ["Matemática", "Física", "Química", "Biologia"],
+  },
+  { nome: "Maria", ano: 4, matérias: ["Português", "Inglês", "Artes"] },
+  {
+    nome: "Pedro",
+    ano: 1,
+    matérias: [
+      "Matemática",
+      "Física",
+      "Inglês",
+      "Lógica de Programação: Python",
+    ],
+  },
+  { nome: "Luisa", ano: 3, matérias: ["Biologia", "Química", "Sociologia"] },
+  {
+    nome: "Carlos",
+    ano: 2,
+    matérias: ["História", "Geografia", "Educação Física"],
+  },
+  { nome: "Ana", ano: 3, matérias: ["Educação Física", "Artes", "Redes"] },
+  {
+    nome: "Rafael",
+    ano: 4,
+    matérias: [
+      "Inglês",
+      "Matemática",
+      "Português",
+      "Lógica de Programação: Java",
+    ],
+  },
+  {
+    nome: "Isabela",
+    ano: 3,
+    matérias: ["Biologia", "Química", "Dispositivos Móveis"],
+  },
+  {
+    nome: "Julia",
+    ano: 2,
+    matérias: ["Matemática", "Física", "Lógica de Programação: Php"],
+  },
+  {
+    nome: "Lucas",
+    ano: 4,
+    matérias: ["História", "Geografia", "Sistemas para Servidores"],
+  },
+  {
+    nome: "Mariana",
+    ano: 3,
+    matérias: [
+      "Lógica de Programação: Java",
+      "Lógica de Programação: JS",
+      "Matemática",
+    ],
+  },
+  {
+    nome: "Fernanda",
+    ano: 1,
+    matérias: ["Sociologia", "Filosofia", "Eletricano"],
+  },
+  {
+    nome: "Gustavo",
+    ano: 1,
+    matérias: ["Banco de Dados", "Redes", "Sistemas para Servidores", "Inglês"],
+  },
+  {
+    nome: "Daniel",
+    ano: 2,
+    matérias: ["Educação Física", "Artes", "Biologia"],
+  },
+  { nome: "Camila", ano: 3, matérias: ["Biologia", "Química", "Português"] },
+  {
+    nome: "Sophia",
+    ano: 2,
+    matérias: ["Português", "Inglês", "Matemática", "Física"],
+  },
+  {
+    nome: "Matheus",
+    ano: 4,
+    matérias: ["Matemática", "Inglês", "Sociologia", "Eletricano"],
+  },
 ]
 
 export function Table() {
-  const [searchName, setSearchName] = useState('')
-  const [filterSubject, setFilterSubject] = useState('')
-  
+  const [searchData, setSearchData] = useState("")
+  const [filterSubject, setFilterSubject] = useState("")
+
   const allSubjects = [
     {
       value: "",
@@ -34,8 +130,8 @@ export function Table() {
       text: "Dispositivos Móveis",
     },
     {
-      value: "Eletricidade",
-      text: "Eletricidade",
+      value: "Eletricano",
+      text: "Eletricano",
     },
     {
       value: "Educação Física",
@@ -46,6 +142,18 @@ export function Table() {
       text: "Física",
     },
     {
+      value: "Filosofia",
+      text: "Filosofia",
+    },
+    {
+      value: "Geografia",
+      text: "Geografia",
+    },
+    {
+      value: "História",
+      text: "História",
+    },
+    {
       value: "Inglês",
       text: "Inglês",
     },
@@ -54,8 +162,8 @@ export function Table() {
       text: "Lógica de Programação: Java",
     },
     {
-      value: "Lógica de Programação: JavaScript",
-      text: "Lógica de Programação: JavaScript",
+      value: "Lógica de Programação: JS",
+      text: "Lógica de Programação: JS",
     },
     {
       value: "Lógica de Programação: Php",
@@ -92,56 +200,63 @@ export function Table() {
   ]
 
   const handleNameChange = (e: any) => {
-    setSearchName(e.target.value)
+    setSearchData(e.target.value)
   }
 
-  const filteredData = data.filter((item) => {
-    return (
-      item.nome.toLowerCase().includes(searchName.toLowerCase()) &&
-      (filterSubject === '' || item.matérias.includes(filterSubject))
-    )
+  const filteredData = usersData.filter((item) => {
+    if (searchData === "") {
+      return filterSubject === "" || item.matérias.includes(filterSubject)
+    } else if (isNaN(Number(searchData))) {
+      return (
+        item.nome.toLowerCase().includes(searchData.toLowerCase()) &&
+        (filterSubject === "" || item.matérias.includes(filterSubject))
+      )
+    } else {
+      return (
+        item.ano.toString() === searchData &&
+        (filterSubject === "" || item.matérias.includes(filterSubject))
+      )
+    }
   })
 
   return (
-    <div>
+    <Container>
       <div>
-        <label htmlFor="nameInput">Buscar por Nome:</label>
         <Input
+          id="searchData"
           type="text"
-          id="nameInput"
-          value={searchName}
-          onChange={handleNameChange} label={''} />
-      </div>
-      <div>
-        <label htmlFor="subjectSelect">Filtrar por Matéria:</label>
-        <Select
-          id="subjectSelect"
-          options={allSubjects}
-          data={filterSubject}
-          setData={setFilterSubject}
-          inputArrow={false}
+          name="searchData"
+          label="Buscar por nome ou ano"
+          value={searchData}
+          onChange={handleNameChange}
         />
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>Matérias</th>
-          </tr>
-        </thead>
-        <tbody>
+      <TableContainer>
+        <TableHeader>
+          <TableHeaderCell width={"3"}>Nome</TableHeaderCell>
+          <TableHeaderCell width={"10"}>ano</TableHeaderCell>
+          <TableHeaderCell width={"70"}>
+            <Select
+              id="subjectSelect"
+              options={allSubjects}
+              data={filterSubject}
+              setData={setFilterSubject}
+              inputArrow={false}
+            />
+          </TableHeaderCell>
+        </TableHeader>
+        <TableBody>
           {filteredData.map((val, key) => {
             return (
-              <tr key={key}>
-                <td>{val.nome}</td>
-                <td>{val.idade}</td>
-                <td>{val.matérias.join(', ')}</td>
-              </tr>
+              <TableRow key={key}>
+                <TableCell width={"3"}>{val.nome}</TableCell>
+                <TableCell width={"10"}>{val.ano}</TableCell>
+                <TableCell width={"70"}>{val.matérias.join(", ")}</TableCell>
+              </TableRow>
             )
           })}
-        </tbody>
-      </table>
-    </div>
+        </TableBody>
+      </TableContainer>
+    </Container>
   )
 }

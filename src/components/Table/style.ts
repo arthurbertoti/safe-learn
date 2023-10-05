@@ -1,55 +1,85 @@
 import styled from 'styled-components'
 
-export const TableStyle = styled.table`
-  font-size: 14px;
-  color: purple;
-  text-align: justify;
-  border-collapse: collapse;
-  width: 100%;
+export interface TableCellProps {
+  width?: string
+}
 
-  & thead {
-    box-shadow: rgba(139, 139, 139, 0.3) 0px 0px 10px;
-    position: sticky;
-    top: 0rem;
-    z-index: 1;
-    background-color: white;
-  }
-
-  & th,
-  td {
-    padding: 1rem 0;
-    font-weight: normal !important;
-    text-align: center;
-  }
-`
-export const Tr = styled.tr<{ background: string }>`
-  background-color: ${(props) => props.background};
-  border-color: ${(props) => props.background};
-`
-export const GrayImg = styled.img`
-  filter: var(--filter-gray);
-`
-export const PaginationDiv = styled.div`
-  padding: 1rem;
+export const Container = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  width: 100%;
+`
 
-  & .active {
-    color: var(--purple);
+export const TableContainer = styled.table`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: rgb(49, 49, 60);
+  color: white;
+  border-radius: 8px;
+`
+
+export const TableHeader = styled.thead`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid rgb(28, 28, 31);
+  color: rgb(158, 158, 177);
+`
+
+export const TableHeaderCell = styled.th<TableCellProps>`
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  text-align: center;
+  justify-content: center;
+  width: ${props => props.width}%;
+`
+
+export const TableBody = styled.tbody`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`
+
+export const TableRow = styled.tr`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid rgb(28, 28, 31);
+  border-bottom: 1px solid rgb(28, 28, 31);
+  color: rgb(158, 158, 177);
+  :hover {
+    background-color: rgb(28, 28, 31);
+  }
+  :first-child {
+    border-top: none;
+  } 
+  :last-child {
+    border-bottom: none;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
   }
 `
-export const ArrowButton = styled.button`
-  font-weight: 500;
-  font-size: var(--fontsize-text);
-  color: var(--purple);
-  border: none;
-  background-color: var(--background);
-  margin: 1rem;
-`
-export const PageButton = styled.button`
-  font-size: var(--fontsize-text);
-  color: var(--gray);
-  border: none;
-  background-color: var(--background);
-  margin: 1rem;
+
+export const TableCell = styled.td<TableCellProps>`
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  text-align: center;
+  justify-content: center;
+  width: ${props => props.width}%;
+  :last-child {
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
 `
