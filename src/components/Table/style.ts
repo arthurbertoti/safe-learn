@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Themes } from '../../styles/Themes'
 
 export interface TableCellProps {
   width?: string
@@ -10,6 +11,8 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  border: 1px solid ${Themes.blue};
+  border-radius: 8px;
 `
 
 export const TableContainer = styled.table`
@@ -19,8 +22,7 @@ export const TableContainer = styled.table`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  background-color: rgb(49, 49, 60);
-  color: white;
+  background-color: ${Themes.white};
   border-radius: 8px;
 `
 
@@ -30,8 +32,10 @@ export const TableHeader = styled.thead`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  border-bottom: 1px solid rgb(28, 28, 31);
-  color: rgb(158, 158, 177);
+  border-top: 1px solid ${Themes.blue};
+  border-bottom: 1px solid ${Themes.blue};
+  color: ${Themes.blue};
+  font-weight: 800 !important;
 `
 
 export const TableHeaderCell = styled.th<TableCellProps>`
@@ -55,19 +59,21 @@ export const TableRow = styled.tr`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  border-top: 1px solid rgb(28, 28, 31);
-  border-bottom: 1px solid rgb(28, 28, 31);
-  color: rgb(158, 158, 177);
+  cursor: pointer;
+  border-top: 1px solid ${Themes.blue};
+  border-bottom: 1px solid ${Themes.blue};
+  color: ${Themes.blue};
   :hover {
-    background-color: rgb(28, 28, 31);
+    background-color: ${Themes.blue};
+    color: ${Themes.white};
   }
-  :first-child {
-    border-top: none;
-  } 
   :last-child {
     border-bottom: none;
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
+  }
+  td:last-child {
+    align-items: self-start;
   }
 `
 
@@ -81,5 +87,21 @@ export const TableCell = styled.td<TableCellProps>`
   :last-child {
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
+  }
+`
+
+export const InputContainer = styled.div`
+  display: flex;
+  padding-top: 12px;
+  width: 100%;
+  justify-content: center;
+  input {
+    background-color: ${Themes.white};
+    border-radius: 12px;
+    border: 1px solid ${Themes.blue};
+    color: ${Themes.blue};
+    font-size: 15px;
+    outline: none;
+    padding: 16px 32px;
   }
 `

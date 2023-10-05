@@ -1,5 +1,4 @@
 import { useComponentVisible } from '../../hooks/useComponentVisible'
-import arrowImg from '../../assets/arrow-down.svg'
 import {
   DivSelect,
   DropdownContainer,
@@ -52,7 +51,6 @@ export function Select({
           readOnly={readOnly}
           isNewContent={isNewContent}
         />
-        {inputArrow && <SelectIcon src={arrowImg} alt="Seta para baixo" />}
       </DivSelect>
       {isComponentVisible && (
         <DropdownContainer

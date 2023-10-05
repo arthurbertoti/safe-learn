@@ -11,6 +11,7 @@ export const Button = styled.button`
   background: ${Themes.blue};
   transition: border-color 0.2s;
   outline: none;
+  cursor: pointer;
   &:hover {
     border-color: ${Themes.blue};
     background: ${Themes.white};
@@ -19,6 +20,6 @@ export const Button = styled.button`
   &:disabled {
     border-color: ${Themes.gray};
     background: ${Themes.gray};
-    color: ${Themes.white};
+    color: ${Themes.black};
   }
 `;

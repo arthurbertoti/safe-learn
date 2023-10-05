@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { Input, Select } from "../"
 import {
@@ -8,8 +9,8 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  InputContainer
 } from "./style"
-import chatImg from "../../assets/chat.png"
 
 const usersData = [
   {
@@ -72,14 +73,13 @@ const usersData = [
     ano: 3,
     matérias: [
       "Lógica de Programação: Java",
-      "Lógica de Programação: JS",
       "Matemática",
     ],
   },
   {
     nome: "Fernanda",
     ano: 1,
-    matérias: ["Sociologia", "Filosofia", "Eletricano"],
+    matérias: ["Sociologia", "Filosofia", "Eletricidade"],
   },
   {
     nome: "Gustavo",
@@ -100,13 +100,14 @@ const usersData = [
   {
     nome: "Matheus",
     ano: 4,
-    matérias: ["Matemática", "Inglês", "Sociologia", "Eletricano"],
+    matérias: ["Matemática", "Inglês", "Sociologia", "Eletricidade"],
   },
 ]
 
 export function Table() {
   const [searchData, setSearchData] = useState("")
   const [filterSubject, setFilterSubject] = useState("")
+  const navigate = useNavigate()
 
   const allSubjects = [
     {
@@ -130,8 +131,8 @@ export function Table() {
       text: "Dispositivos Móveis",
     },
     {
-      value: "Eletricano",
-      text: "Eletricano",
+      value: "Eletricidade",
+      text: "Eletricidade",
     },
     {
       value: "Educação Física",
@@ -221,7 +222,7 @@ export function Table() {
 
   return (
     <Container>
-      <div>
+      <InputContainer>
         <Input
           id="searchData"
           type="text"
@@ -230,10 +231,10 @@ export function Table() {
           value={searchData}
           onChange={handleNameChange}
         />
-      </div>
+      </InputContainer>
       <TableContainer>
         <TableHeader>
-          <TableHeaderCell width={"3"}>Nome</TableHeaderCell>
+          <TableHeaderCell width={"20"}>Nome</TableHeaderCell>
           <TableHeaderCell width={"10"}>ano</TableHeaderCell>
           <TableHeaderCell width={"70"}>
             <Select
@@ -248,8 +249,12 @@ export function Table() {
         <TableBody>
           {filteredData.map((val, key) => {
             return (
-              <TableRow key={key}>
-                <TableCell width={"3"}>{val.nome}</TableCell>
+              <TableRow key={key} onClick={
+                () => {
+                  console.log(navigate("/student"))
+                }
+              }>
+                <TableCell width={"20"}>{val.nome}</TableCell>
                 <TableCell width={"10"}>{val.ano}</TableCell>
                 <TableCell width={"70"}>{val.matérias.join(", ")}</TableCell>
               </TableRow>

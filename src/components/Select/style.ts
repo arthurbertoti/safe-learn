@@ -8,8 +8,7 @@ export const DropdownContainer = styled.div`
   overflow-y: auto;
   z-index: 5;
   cursor: pointer;
-  background: white;
-  box-shadow: 0px 0px 20px rgba(139, 139, 139, 0.5);
+  background-color: ${Themes.white};
   border-radius: 20px;
   border: 1px solid gray;
 `
@@ -22,16 +21,14 @@ export const DivSelect = styled.div`
 export const CustomSelect = styled.input<{ isNewContent?: boolean }>`
   appearance: none;
   width: 100%;
-  background: gray;
+  height: 30px;
+  background-color: ${Themes.white};
   cursor: pointer;
   border-radius: 12px;
-  border: 1px solid gray;
-  color: blue;
+  border: 1px solid ${Themes.blue};
+  color: ${Themes.blue};
   font-size: 15px;
   outline: none;
-  display: block;
-  margin-top: 20px;
-
   padding: 16px 32px;
 `
 
@@ -44,8 +41,11 @@ export const SelectIcon = styled.img`
 `
 
 export const OptionList = styled.ul<{ isNewContent?: boolean }>`
-  color: blue;
   font-size: 15px;
+  padding: 0;
+  border: none;
+  margin: 0;
+  background-color: ${Themes.white};
 
   li:first-child {
     border-radius: 20px 20px 0 0;
@@ -61,17 +61,13 @@ export const OptionDropdown = styled.li`
   width: 100%;
   display: flex;
   background: gray;
-  padding: 18px;
+  padding: 8px;
   text-align: initial;
   list-style: none;
-  border-bottom: 1px solid gray;
-
+  border-bottom: 1px solid ${Themes.blue};
+  background-color: ${Themes.white};
   :hover {
-    color: white;
+    background-color: ${Themes.blue};
+    color: ${Themes.white};
   }
-`
-
-export const ArrowImg = styled.img`
-  width: 1rem;
-  margin-left: 0.5rem;
 `

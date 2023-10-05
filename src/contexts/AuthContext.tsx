@@ -37,7 +37,6 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [roles, setRoles] = useState<string[]>([])
   const [userName, setUserName] = useState<string | null>(null)
   const [userId, setUserId] = useState<number | null>(null)
-  const [errors, setErrors] = useState("")
 
   const navigate = useNavigate()
 

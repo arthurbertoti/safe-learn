@@ -15,7 +15,7 @@ export const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 450px;
-  height: 500px;
+  padding: 24px 0 36px 0;
   @media screen and (max-width: 450px) {
     width: 100%;
     height: 100%;
@@ -24,6 +24,7 @@ export const LoginForm = styled.form`
   justify-content: center;
   background-color: ${Themes.white};
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  border-radius: 8px;
 `
 
 export const LoginTitle = styled.h2`
