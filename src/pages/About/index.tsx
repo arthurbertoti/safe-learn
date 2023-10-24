@@ -1,8 +1,8 @@
-import { Container } from "../PageUnderConstruction/style"
+import { Main } from "./style"
 
 export function About() {
   return (
-    <Container>
+    <Main>
       <h1>SOBRE</h1>
       <br />
       <p>
@@ -24,6 +24,6 @@ export function About() {
           Kauê Rafael Piangers da Fonseca
         </a>
       </p>
-    </Container>
+    </Main>
   )
 }
