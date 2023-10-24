@@ -4,6 +4,7 @@ import { Header } from "../components/Header"
 import { NavigationContextProvider  } from "../contexts/NavigationContext"
 import { PageUnderConstruction } from "../pages/PageUnderConstruction"
 import { About } from "../pages/About"
+import { Student } from "../pages/Student"
 
 export function AppRoutes() {
   return (
@@ -12,7 +13,7 @@ export function AppRoutes() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/student" element={<PageUnderConstruction/>} />
+          <Route path="/student" element={<Student/>} />
           <Route path="/chats" element={<PageUnderConstruction />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />

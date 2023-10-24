@@ -238,6 +238,7 @@ export function Table() {
             <TableHeaderCell width={"70"}>
               <Select
                 id="subjectSelect"
+                placeholder="Todas as Matérias"
                 options={allSubjects}
                 data={filterSubject}
                 setData={setFilterSubject}

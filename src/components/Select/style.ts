@@ -31,6 +31,11 @@ export const CustomSelect = styled.input`
   font-size: 15px;
   outline: none;
   padding: 16px 32px;
+
+  &:placeholder {
+    color: ${Themes.blue};
+    font-size: 15px;
+  }
 `
 
 export const OptionList = styled.ul<{ isNewContent?: boolean }>`
