@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+
+import { User, getUsers } from "../../services/User"
+
 import { Input, Select } from "../"
 import {
   Container,
@@ -13,98 +16,11 @@ import {
   TableHeaderRow,
 } from "./style"
 
-const usersData = [
-  {
-    nome: "Anom",
-    ano: 2,
-    matérias: ["Português", "Matemática", "Lógica de Programação: Java"],
-  },
-  { nome: "Megha", ano: 2, matérias: ["Filosofia", "Inglês", "Português"] },
-  { nome: "Subham", ano: 2, matérias: ["Lógica de Programação: Python"] },
-  {
-    nome: "João",
-    ano: 3,
-    matérias: ["Matemática", "Física", "Química", "Biologia"],
-  },
-  { nome: "Maria", ano: 4, matérias: ["Português", "Inglês", "Artes"] },
-  {
-    nome: "Pedro",
-    ano: 1,
-    matérias: [
-      "Matemática",
-      "Física",
-      "Inglês",
-      "Lógica de Programação: Python",
-    ],
-  },
-  { nome: "Luisa", ano: 3, matérias: ["Biologia", "Química", "Sociologia"] },
-  {
-    nome: "Carlos",
-    ano: 2,
-    matérias: ["História", "Geografia", "Educação Física"],
-  },
-  { nome: "Ana", ano: 3, matérias: ["Educação Física", "Artes", "Redes"] },
-  {
-    nome: "Rafael",
-    ano: 4,
-    matérias: [
-      "Inglês",
-      "Matemática",
-      "Português",
-      "Lógica de Programação: Java",
-    ],
-  },
-  {
-    nome: "Isabela",
-    ano: 3,
-    matérias: ["Biologia", "Química", "Dispositivos Móveis"],
-  },
-  {
-    nome: "Julia",
-    ano: 2,
-    matérias: ["Matemática", "Física", "Lógica de Programação: Php"],
-  },
-  {
-    nome: "Lucas",
-    ano: 4,
-    matérias: ["História", "Geografia", "Sistemas para Servidores"],
-  },
-  {
-    nome: "Mariana",
-    ano: 3,
-    matérias: ["Lógica de Programação: Java", "Matemática"],
-  },
-  {
-    nome: "Fernanda",
-    ano: 1,
-    matérias: ["Sociologia", "Filosofia", "Eletricidade"],
-  },
-  {
-    nome: "Gustavo",
-    ano: 1,
-    matérias: ["Banco de Dados", "Redes", "Sistemas para Servidores", "Inglês"],
-  },
-  {
-    nome: "Daniel",
-    ano: 2,
-    matérias: ["Educação Física", "Artes", "Biologia"],
-  },
-  { nome: "Camila", ano: 3, matérias: ["Biologia", "Química", "Português"] },
-  {
-    nome: "Sophia",
-    ano: 2,
-    matérias: ["Português", "Inglês", "Matemática", "Física"],
-  },
-  {
-    nome: "Matheus",
-    ano: 4,
-    matérias: ["Matemática", "Inglês", "Sociologia", "Eletricidade"],
-  },
-]
-
 export function Table() {
+  const [data, setData] = useState<User[]>([])
   const [searchData, setSearchData] = useState("")
   const [filterSubject, setFilterSubject] = useState("")
+  const [errors, setErrors] = useState("")
   const navigate = useNavigate()
 
   const allSubjects = [
@@ -173,7 +89,7 @@ export function Table() {
       text: "Lógica de Programação: Python",
     },
     {
-      value: "Matemática",
+      value: "matematica",
       text: "Matemática",
     },
     {
@@ -198,22 +114,35 @@ export function Table() {
     },
   ]
 
+  const handleGetUsers = async () => {
+    try {
+      const response = await getUsers()
+      setData(response)
+    } catch (err: any) {
+      setErrors(err.response.data.error_description)
+    }
+  }
+
+  useEffect(() => {
+    handleGetUsers()
+  }, [])
+
   const handleNameChange = (e: any) => {
     setSearchData(e.target.value)
   }
 
-  const filteredData = usersData.filter((item) => {
+  const filteredData = data?.filter((item: User) => {
     if (searchData === "") {
-      return filterSubject === "" || item.matérias.includes(filterSubject)
+      return filterSubject === "" || item.materia.includes(filterSubject)
     } else if (isNaN(Number(searchData))) {
       return (
-        item.nome.toLowerCase().includes(searchData.toLowerCase()) &&
-        (filterSubject === "" || item.matérias.includes(filterSubject))
+        item.name.toLowerCase().includes(searchData.toLowerCase()) &&
+        (filterSubject === "" || item.materia.includes(filterSubject))
       )
     } else {
       return (
         item.ano.toString() === searchData &&
-        (filterSubject === "" || item.matérias.includes(filterSubject))
+        (filterSubject === "" || item.materia.includes(filterSubject))
       )
     }
   })
@@ -248,7 +177,7 @@ export function Table() {
           </TableHeaderRow>
         </TableHeader>
         <TableBody>
-          {filteredData.map((val, key) => {
+          {filteredData.map((user: User, key: number) => {
             return (
               <TableRow
                 key={key}
@@ -256,9 +185,9 @@ export function Table() {
                   console.log(navigate("/student"))
                 }}
               >
-                <TableCell width={"20"}>{val.nome}</TableCell>
-                <TableCell width={"10"}>{val.ano}</TableCell>
-                <TableCell width={"70"}>{val.matérias.join(", ")}</TableCell>
+                <TableCell width={"20"}>{user.name}</TableCell>
+                <TableCell width={"10"}>{user.ano}</TableCell>
+                <TableCell width={"70"}>{user.materia}</TableCell>
               </TableRow>
             )
           })}
