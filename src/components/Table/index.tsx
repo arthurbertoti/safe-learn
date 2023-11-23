@@ -182,7 +182,7 @@ export function Table() {
               <TableRow
                 key={key}
                 onClick={() => {
-                  console.log(navigate("/student"))
+                  navigate(`/student/${user.id}`)
                 }}
               >
                 <TableCell width={"20"}>{user.name}</TableCell>

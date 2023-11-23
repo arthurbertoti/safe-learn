@@ -21,8 +21,8 @@ export const getUsers = async () => {
   return response.data
 }
 
-export const getUser = async (id: string) => {
-  const response = await api.get<User>(`/users/${id}`)
+export const getUser = async (id: number) => {
+  const response = await api.get(`/users/${id}`)
   return response.data
 }
 

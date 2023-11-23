@@ -31,7 +31,7 @@ export function Header() {
           </Button>
         )}
       </ButtonWrapper>
-      <ButtonWrapper>
+      {/* <ButtonWrapper>
         {currentLocation === 'CHATS' ? (
           <ActiveButton
             onClick={() => {
@@ -51,7 +51,7 @@ export function Header() {
             CHATS
           </Button>
         )}
-      </ButtonWrapper>
+      </ButtonWrapper> */}
       <ButtonWrapper>
         {currentLocation === 'ABOUT' ? (
           <ActiveButton

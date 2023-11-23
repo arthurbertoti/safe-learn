@@ -1,18 +1,44 @@
-import { Link } from "react-router-dom";
-import { Container, Main } from "./style";
+import { Link, useParams } from "react-router-dom"
+import { Container, Main } from "./style"
+import { User, getUser } from "../../services/User"
+import { useEffect, useState } from "react"
 
-export function Student() {
+export function StudentProfile() {
+  const [user, setUser] = useState<User>()
+  const [errors, setErrors] = useState("")
+  const { id } = useParams()
+
+  const handleGetUser = async () => {
+    try {
+      const response = await getUser(Number(id))
+      setUser(response.user)
+      console.log(response) 
+      console.log(user) 
+    } catch (err: any) {
+      setErrors(err.response.data.error_description)
+    }
+  }
+
+  useEffect(() => {
+    handleGetUser()
+  }, [])
+
   return (
     <Main>
       <Container>
-        <h3>Nome: Alceu Dispor</h3>
-        <h3>Email: alceudispordasilva@gmail.com</h3>
-        <p>Matérias que o aluno pode ajudar: 
-        <span>
-          {"Inglês, Matemática, Português, Lógica de Programação: Java"}
-        </span>
-        </p>
-        <Link to="/chats">Conversar com usuário</Link>
+        {user ? (
+          <>
+            <h3>Nome: {user.name}</h3>
+            <h3>Email: {user.email}</h3>
+            <p>
+              Matéria que o aluno pode ajudar:
+              <span> {user.materia}</span>
+            </p>
+            <Link to="/chats">Conversar com usuário</Link>
+          </>
+        ) : (
+          <h3>Usuário não encontrado</h3>
+        )}
       </Container>
     </Main>
   )
