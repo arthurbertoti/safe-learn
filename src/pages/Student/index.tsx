@@ -39,6 +39,7 @@ export function StudentProfile() {
             <Link to={`https://wa.me//5551${user.phone}?text=${whatsAppText}`}>
             Clique aqui para conversar com usuário por WhatsApp
             </Link>
+            <Link to={`/student/edit/${id}`}>EDITAR USUÁRIO</Link>
           </>
         ) : (
           <h3>Usuário não encontrado</h3>

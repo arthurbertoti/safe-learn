@@ -30,7 +30,6 @@ export const NavigationContextProvider = ({
 
   const setLocation = (location: string) => {
     setCurrentLocation(location)
-    console.log(currentLocation)
   }
 
   return (

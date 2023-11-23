@@ -16,6 +16,7 @@ export const Container = styled.div`
   justify-content: start;
   padding: 10%;
   width: 100%;
+  gap: 20px;
   background-color: ${Themes.white};
   border: 1px solid ${Themes.blue};
   border-radius: 8px;
