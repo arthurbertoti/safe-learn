@@ -18,7 +18,6 @@ import { Button } from "../../components/Button"
 import openEyeIcon from "../../assets/icons/eye-open-icon.svg"
 import closedEyeIcon from "../../assets/icons/eye-closed-icon.svg"
 
-
 export function SignIn() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
@@ -69,16 +68,20 @@ export function SignIn() {
         }}
       >
         <LoginTitle>Safe Learn</LoginTitle>
-        <Input
-          label="Email"
-          type="email"
-          id="email"
-          onChange={(e) => {
-            setUsername(e.target.value)
-          }}
-        />
         <InputContainer>
           <Input
+            width="80%"
+            label="Email"
+            type="email"
+            id="email"
+            onChange={(e) => {
+              setUsername(e.target.value)
+            }}
+          />
+        </InputContainer>
+        <InputContainer>
+          <Input
+            width="80%"
             label="Password"
             type="password"
             name="password"
@@ -101,6 +104,7 @@ export function SignIn() {
             Login
           </Button>
         </ButtonContainer>
+        <Link to="/create-user">Criar novo usuário</Link>
         {errors != null && errorNotification && <span>{loginError}</span>}
       </LoginForm>
     </Container>

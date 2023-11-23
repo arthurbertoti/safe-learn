@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 import { Themes } from '../../styles/Themes'
 
+interface CustomSelectProps {
+  height?: string
+  width?: string
+}
+
 export const DropdownContainer = styled.div`
   position: absolute;
-  width: 50%;
+  width: 100%;
   max-height: 220px;
   overflow-y: auto;
   z-index: 5;
@@ -14,15 +19,19 @@ export const DropdownContainer = styled.div`
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 `
 
-export const DivSelect = styled.div`
+export const DivSelect = styled.div<CustomSelectProps>`
   position: relative;
   display: flex;
+  flex-direction: column;
+  width: ${(props: CustomSelectProps) => props.width || '100%'};
+  height: ${(props: CustomSelectProps) => props.height || 'auto'};
+  justify-content: center;
 `
 
-export const CustomSelect = styled.input`
+export const CustomSelect = styled.input<CustomSelectProps>`
   appearance: none;
   width: 100%;
-  height: 30px;
+  height: ${(props: CustomSelectProps) => props.height || '30px'};
   background-color: ${Themes.white};
   cursor: pointer;
   border-radius: 12px;
@@ -68,4 +77,10 @@ export const OptionDropdown = styled.li`
     background-color: ${Themes.blue};
     color: ${Themes.white};
   }
+`
+
+export const Label = styled.label`
+  font-size: 14px;
+  color: ${Themes.blue};
+  margin-bottom: 8px;
 `

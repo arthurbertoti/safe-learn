@@ -15,10 +15,8 @@ export function StudentProfile() {
     try {
       const response = await getUser(Number(id))
       setUser(response.user)
-      console.log(response) 
-      console.log(user) 
     } catch (err: any) {
-      setErrors(err.response.data.error_description)
+      setErrors(err.response.data)
     }
   }
 

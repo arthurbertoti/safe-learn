@@ -5,6 +5,7 @@ import {
   CustomSelect,
   OptionDropdown,
   OptionList,
+  Label as LabelComponent,
 } from './style'
 
 export interface OptionsSelect {
@@ -18,6 +19,7 @@ export interface CustomSelectProps {
   inputArrow: boolean
   options: OptionsSelect[]
   data: string
+  label?: string
   setData: (value: string) => void
   readOnly?: boolean
 }
@@ -28,6 +30,7 @@ export function Select({
   inputArrow,
   options,
   data,
+  label,
   setData,
   readOnly = true,
 }: CustomSelectProps) {
@@ -39,7 +42,9 @@ export function Select({
 
   return (
     <>
+    
       <DivSelect>
+      {label && <LabelComponent htmlFor={id}>{label}</LabelComponent>}
         <CustomSelect
           id={id}
           placeholder={placeholder}

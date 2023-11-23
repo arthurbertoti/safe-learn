@@ -1,11 +1,7 @@
 import { Routes, Route } from "react-router-dom"
-import { Home, NotFound } from "../pages"
 import { Header } from "../components/Header"
 import { NavigationContextProvider  } from "../contexts/NavigationContext"
-import { PageUnderConstruction } from "../pages/PageUnderConstruction"
-import { About } from "../pages/About"
-import { StudentProfile as Student } from "../pages/Student"
-import { Chats } from "../pages/Chats"
+import { About, Chats, Home, NotFound, PageUnderConstruction, StudentProfile as Student } from "../pages"
 
 export function AppRoutes() {
   return (

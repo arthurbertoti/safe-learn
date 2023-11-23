@@ -3,14 +3,14 @@ import { Themes } from '../../styles/Themes'
 
 interface ContainerProps {
   height?: string
+  width?: string
 }
 
 export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80%;
-  margin-bottom: 16px;
+  width: ${(props: ContainerProps) => props.width || '100%'};
   height: ${(props: ContainerProps) => props.height || 'auto'};
 `
 

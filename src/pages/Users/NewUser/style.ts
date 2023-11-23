@@ -1,6 +1,5 @@
 import styled from "styled-components";
-
-import { Themes } from "../../styles/Themes";
+import { Themes } from "../../../styles/Themes";
 
 export const Container = styled.main`
   display: flex;
@@ -11,11 +10,11 @@ export const Container = styled.main`
   justify-content: center;
 `
 
-export const LoginForm = styled.form`
+export const CreateUserForm = styled.form`
   display: flex;
   flex-direction: column;
   width: 450px;
-  gap: 24px;
+  gap: 10px;
   padding: 24px 0 36px 0;
   @media screen and (max-width: 450px) {
     width: 100%;
@@ -28,11 +27,16 @@ export const LoginForm = styled.form`
   border-radius: 8px;
 `
 
-export const LoginTitle = styled.h2`
-  padding-top: 24px;
+export const Title = styled.h1`
   text-align: center;
-  margin-bottom: 0;
   font-size: 24px;
+  font-weight: 500;
+  color: ${Themes.blue};
+`
+
+export const SubTitle = styled.h3`
+  text-align: center;
+  font-size: 14px;
   font-weight: 500;
   color: ${Themes.blue};
 `
@@ -47,8 +51,11 @@ export const ButtonContainer = styled.div`
 export const InputContainer = styled.div`
   position: relative;
   display: flex;
-  width: 100%;
+  width: 80%;
   justify-content: center;
+  input {
+    height: 25px;
+  }
 `
 
 export const EyeButton = styled.div`
@@ -57,6 +64,13 @@ export const EyeButton = styled.div`
   outline: none;
   cursor: pointer;
   position: absolute;
-  bottom: 15px;
-  right: 70px;
+  bottom: 7px;
+  right: 30px;
+`
+
+export const Alert = styled.span`
+  color: ${Themes.red};
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
 `

@@ -1,3 +1,8 @@
 export { Home } from './Home'
 export { SignIn } from './SignIn'
 export { NotFound } from './NotFound'
+export { NewUserComponent as NewUser } from './Users/NewUser'
+export { About } from './About'
+export { Chats } from './Chats'
+export { PageUnderConstruction } from './PageUnderConstruction'
+export { StudentProfile } from './Student'
