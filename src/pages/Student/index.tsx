@@ -1,11 +1,13 @@
 import { Link, useParams } from "react-router-dom"
-import { Container, Main } from "./style"
-import { User, getUser } from "../../services/User"
+import { Container, DeleteText, Main } from "./style"
+import { User, deleteUser, getUser } from "../../services/User"
 import { useEffect, useState } from "react"
+import { Modal } from "../../components/Modal"
 
 export function StudentProfile() {
   const [user, setUser] = useState<User>()
   const [errors, setErrors] = useState("")
+  const [openModal, setOpenModal] = useState(false)
   const { id } = useParams()
   const whatsAppText = "Olá%2C%20tenho%20interesse%20em%20saber%20quais%20horários%20você%20está%20disponível%20para%20dar%20aula%20no%20SafeLearn"
   const emailSubject = "Mentoria%20SafeLearn"
@@ -24,6 +26,10 @@ export function StudentProfile() {
     handleGetUser()
   }, [])
 
+  const handleDeleteUser = () => {
+    setOpenModal(true)
+  }
+
   return (
     <Main>
       <Container>
@@ -40,11 +46,15 @@ export function StudentProfile() {
             Clique aqui para conversar com usuário por WhatsApp
             </Link>
             <Link to={`/student/edit/${id}`}>EDITAR USUÁRIO</Link>
+            <DeleteText onClick={handleDeleteUser}>DELETAR USUÁRIO</DeleteText>
           </>
         ) : (
           <h3>Usuário não encontrado</h3>
         )}
       </Container>
+      {openModal && <Modal id={Number(id)} setOpenModal={setOpenModal} />}
     </Main>
   )
 }
+
+

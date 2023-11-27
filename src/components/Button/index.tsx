@@ -6,6 +6,7 @@ interface ButtonProps {
   disabled?: boolean
   link?: string
   type?: "button" | "submit" | "reset" | undefined
+  onClick?: () => void
 }
 export function Button({
   img,
@@ -13,9 +14,10 @@ export function Button({
   disabled,
   link,
   type = "button",
+  onClick,
 }: ButtonProps) {
   return (
-    <ButtonComponent disabled={disabled} type={type}>
+    <ButtonComponent disabled={disabled} type={type} onClick={onClick}>
       {children}
     </ButtonComponent>
   )

@@ -36,6 +36,7 @@ export const getUser = async (id: number) => {
 }
 
 export const createUser = async (user: NewUser) => {
+  console.log(user)
   const response = await api.post<NewUser>('/register', user)
   return response.data
 }
@@ -45,3 +46,7 @@ export const updateUser = async (user: User) => {
   return response.data
 }
 
+export const deleteUser = async (id: number) => {
+  const response = await api.delete(`/users/${id}`)
+  return response.data
+}

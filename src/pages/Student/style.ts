@@ -14,7 +14,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: start;
-  padding: 10%;
+  padding: 4%;
   width: 100%;
   gap: 20px;
   background-color: ${Themes.white};
@@ -25,4 +25,12 @@ export const Container = styled.div`
   a {
     color: ${Themes.blue};
   }
+`
+
+export const DeleteText = styled.span`
+  color: ${Themes.red};
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
 `
