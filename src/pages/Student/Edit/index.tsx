@@ -131,7 +131,7 @@ export function EditStudent() {
           }}
         >
           <div>
-            <Title>Novo usuário</Title>
+            <Title>Editar usuário</Title>
             <SubTitle>* = obrigatório</SubTitle>
           </div>
           <InputContainer>
